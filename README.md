@@ -11,3 +11,7 @@
   ```bash
   sudo pacman -S sfml
   ```
+
+## Configuration
+
+WIP

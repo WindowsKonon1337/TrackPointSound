@@ -3,10 +3,10 @@
 #include <exception>
 #include <string>
 
-class DevOpenFailException : public std::exception
+class LoadSamplefromFileFailException : public std::exception
 {
 public:
-    explicit DevOpenFailException(const std::string& message)
+    explicit LoadSamplefromFileFailException(const std::string& message)
         : message_(message) {}
 
     virtual const char* what() const noexcept override

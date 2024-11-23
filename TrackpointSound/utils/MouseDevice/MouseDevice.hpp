@@ -4,7 +4,8 @@
 #include <string>
 
 
-namespace utils{
+namespace utils
+{
     class MouseDevice 
     {
     public:
@@ -12,7 +13,7 @@ namespace utils{
 
         MouseDevice() = delete;
 
-        bool mouseMoved();
+        bool isMouseMoved();
     private:
         std::ifstream miceDevFile;
 
