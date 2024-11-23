@@ -6,7 +6,7 @@ find_package(SFML COMPONENTS audio system REQUIRED)
 
 include_directories(
     utils/MouseDevice
-    #utils/SoundPlayer
+    utils/SoundPlayer
     Exceptions/DevOpenFailException
     Exceptions/LoadSampleFromFileFailException
 )
