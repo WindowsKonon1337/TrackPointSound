@@ -32,7 +32,7 @@ namespace utils
 
         currentSound->setBuffer(*buffer);
 
-        currentSound->playRandomSound();
+        currentSound->play();
     }
 
     bool SoundPlayer::isPlayingSound() const
