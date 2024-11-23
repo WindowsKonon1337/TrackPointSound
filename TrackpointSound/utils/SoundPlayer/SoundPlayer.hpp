@@ -14,9 +14,9 @@ namespace utils
     public:
         SoundPlayer(const std::string& audioFolderPath);
 
-        void play();
+        void playRandomSound();
 
-        bool isEnded() const;
+        bool isPlayingSound() const;
     private:
         const std::string& getRandomSample() const;
 

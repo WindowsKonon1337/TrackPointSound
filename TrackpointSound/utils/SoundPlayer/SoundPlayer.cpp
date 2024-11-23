@@ -17,7 +17,7 @@ namespace utils
         randomGenerator = std::make_unique<std::mt19937>(std::random_device{}());
     }
 
-    void SoundPlayer::play()
+    void SoundPlayer::playRandomSound()
     {
         buffer = std::make_shared<sf::SoundBuffer>();
 
@@ -32,13 +32,16 @@ namespace utils
 
         currentSound->setBuffer(*buffer);
 
-        currentSound->play();
+        currentSound->playRandomSound();
     }
 
-    bool SoundPlayer::isEnded() const
+    bool SoundPlayer::isPlayingSound() const
     {
-        if (currentSound == nullptr) return true;
-        return currentSound->getStatus() != sf::Sound::Status::Playing;
+        if (currentSound == nullptr)
+        {
+            return false;
+        }
+        return currentSound->getStatus() == sf::Sound::Status::Playing;
     }
 
     const std::string& SoundPlayer::getRandomSample() const
