@@ -10,7 +10,7 @@ int main(const int argc, const char* argv[]) {
 
     while (true)
     {
-        if (device.mouseMoved() && !player.isPlayingSound())
+        if (device.isMouseMoved() && !player.isPlayingSound())
         {
             player.playRandomSound();
         }

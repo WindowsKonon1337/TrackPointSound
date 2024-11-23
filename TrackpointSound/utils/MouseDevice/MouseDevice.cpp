@@ -13,7 +13,7 @@ namespace utils
         }
     }
 
-    bool MouseDevice::mouseMoved()
+    bool MouseDevice::isMouseMoved()
     {
         miceDevFile.read(mouseData, sizeof(mouseData));
         if (miceDevFile.gcount() != sizeof(mouseData))

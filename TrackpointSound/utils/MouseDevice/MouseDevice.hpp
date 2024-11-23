@@ -13,7 +13,7 @@ namespace utils
 
         MouseDevice() = delete;
 
-        bool mouseMoved();
+        bool isMouseMoved();
     private:
         std::ifstream miceDevFile;
 
