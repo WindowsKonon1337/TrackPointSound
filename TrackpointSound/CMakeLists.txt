@@ -15,7 +15,7 @@ add_executable(
     TrackpointSound
     ./main.cpp
     utils/MouseDevice/MouseDevice.cpp
-    utils/SoundPlayer/SoundPayer.cpp
+    utils/SoundPlayer/SoundPlayer.cpp
 )
 
 target_link_libraries(TrackpointSound sfml-audio sfml-system)
