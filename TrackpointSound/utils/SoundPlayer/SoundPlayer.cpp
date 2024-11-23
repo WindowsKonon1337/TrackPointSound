@@ -35,6 +35,7 @@ namespace utils
 
     bool SoundPlayer::isEnded() const
     {
+        if (currentSound == nullptr) return true;
         return currentSound->getStatus() != sf::Sound::Status::Playing;
     }
 
