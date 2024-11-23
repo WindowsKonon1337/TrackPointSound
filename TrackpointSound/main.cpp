@@ -1,5 +1,3 @@
-#include <iostream>
-#include <fstream>
 #include "MouseDevice.hpp"
 #include "SoundPlayer.hpp"
 
@@ -16,8 +14,9 @@ int main(const int argc, const char* argv[]) {
     while (true)
     {
         if (device.mouseMoved())
-            std::cout <<player.ifEnded() << std::endl;
-                //std::cout << "Device: Мышь перемещена" << std::endl;
+        {
+            // do some work
+        }
     }
 
     return 0;

@@ -1,12 +1,11 @@
 #pragma once
 
-#include <vector>
 #include <string>
 #include <filesystem>
 #include <memory>
-#include <unordered_map>
+
 #include <SFML/Audio.hpp>
-#include <iostream>
+
 namespace utils
 {
     class SoundProducer

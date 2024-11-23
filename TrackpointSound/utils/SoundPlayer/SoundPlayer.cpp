@@ -2,7 +2,6 @@
 #include "LoadSampleFromFileFailException.hpp"
 
 #include <random>
-#include <iostream>
 
 namespace utils
 {
