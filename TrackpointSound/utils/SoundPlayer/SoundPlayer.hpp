@@ -18,9 +18,9 @@ namespace utils
 
         bool isEnded() const;
     private:
-        std::string getRandomSample() const;
+        const std::string& getRandomSample() const;
 
-        using SamplesVec = std::vector<std::filesystem::path>;
+        using SamplesVec = std::vector<std::string>;
 
         std::shared_ptr<sf::Sound> currentSound;
         std::shared_ptr<sf::SoundBuffer> buffer;

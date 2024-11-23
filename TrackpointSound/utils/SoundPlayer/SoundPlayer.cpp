@@ -9,7 +9,9 @@ namespace utils
         namespace fs = std::filesystem;
         for (const auto& elem : fs::directory_iterator(audioFolderPath))
         {
-            samples.push_back(elem.path());
+            samples.push_back(
+                std::string(elem.path())
+            );
         }
         
         randomGenerator = std::make_unique<std::mt19937>(std::random_device{}());
@@ -39,7 +41,7 @@ namespace utils
         return currentSound->getStatus() != sf::Sound::Status::Playing;
     }
 
-    std::string SoundPlayer::getRandomSample() const
+    const std::string& SoundPlayer::getRandomSample() const
     {
         return samples[(*randomGenerator)() % samples.size()];
     }
