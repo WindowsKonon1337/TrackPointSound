@@ -8,13 +8,11 @@ int main(const int argc, const char* argv[]) {
     auto player = SoundPlayer("../../TrackpointSound/audio/");
     auto device = MouseDevice("/dev/input/event6");
 
-    player.play();
-
     while (true)
     {
-        if (device.mouseMoved())
+        if (device.mouseMoved() && player.isEnded())
         {
-            // do some work
+            player.play();
         }
     }
 
