@@ -1,5 +1,5 @@
 #include "MouseDevice.hpp"
-#include "SoundPlayer.hpp"
+#include "SoundProducer.hpp"
 
 using utils::MouseDevice;
 using utils::SoundProducer;

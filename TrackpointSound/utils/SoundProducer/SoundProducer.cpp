@@ -1,4 +1,4 @@
-#include "SoundPlayer.hpp"
+#include "SoundProducer.hpp"
 #include "LoadSampleFromFileFailException.hpp"
 
 #include <random>
