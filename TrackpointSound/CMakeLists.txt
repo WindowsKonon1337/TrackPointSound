@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(server LANGUAGES CXX)
+project(TrackpointSound LANGUAGES CXX)
 
 find_package(SFML COMPONENTS audio system REQUIRED)
 
