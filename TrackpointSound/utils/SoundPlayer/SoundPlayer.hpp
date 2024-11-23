@@ -3,19 +3,20 @@
 #include <string>
 #include <filesystem>
 #include <memory>
+#include <random>
 
 #include <SFML/Audio.hpp>
 
 namespace utils
 {
-    class SoundProducer
+    class SoundPlayer
     {
     public:
-        SoundProducer(const std::string& audioFolderPath);
+        SoundPlayer(const std::string& audioFolderPath);
 
-        std::shared_ptr<sf::Sound> getSound();
+        void play();
 
-        bool ifEnded() const;
+        bool isEnded() const;
     private:
         std::string getRandomSample() const;
 
@@ -26,6 +27,8 @@ namespace utils
 
         SamplesVec samples;
 
+        std::unique_ptr<std::mt19937> randomGenerator;
+        
         const std::string audioFolderPath;
     };
 }

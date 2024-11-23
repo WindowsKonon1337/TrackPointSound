@@ -6,7 +6,7 @@ find_package(SFML COMPONENTS audio system REQUIRED)
 
 include_directories(
     utils/MouseDevice
-    utils/SoundProducer
+    utils/SoundPlayer
     Exceptions/DevOpenFailException
     Exceptions/LoadSampleFromFileFailException
 )
@@ -15,7 +15,7 @@ add_executable(
     TrackpointSound
     ./main.cpp
     utils/MouseDevice/MouseDevice.cpp
-    utils/SoundProducer/SoundProducer.cpp
+    utils/SoundPlayer/SoundPlayer.cpp
 )
 
 target_link_libraries(TrackpointSound sfml-audio sfml-system)
