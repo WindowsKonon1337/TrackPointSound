@@ -8,6 +8,7 @@ include_directories(
     utils/MouseDevice
     utils/SoundPlayer
     Exceptions/DevOpenFailException
+    Exceptions/LoadSampleFromFileFailException
 )
 
 add_executable(
