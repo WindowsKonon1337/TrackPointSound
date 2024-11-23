@@ -1,7 +1,8 @@
 #include "MouseDevice.hpp"
 #include "DevOpenFailException.hpp"
 
-namespace utils {
+namespace utils
+{
     MouseDevice::MouseDevice(const std::string& device)
     {
         this->miceDevFile = std::ifstream(device, std::ios::in | std::ios::binary);

@@ -4,7 +4,8 @@
 #include <string>
 
 
-namespace utils{
+namespace utils
+{
     class MouseDevice 
     {
     public:
