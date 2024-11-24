@@ -10,20 +10,14 @@ std::string DeviceDiscovery::getTrackpointEventPath(bool useCache)
         return this->trackpointEventPathCache;
     }
     std::vector<Device> devices = this->discoverDevices();
-    std::vector<Device> trackpoints;
-    std::copy_if(devices.begin(), devices.end(), std::back_inserter(trackpoints), DeviceDiscovery::isTrackpoint);
-    if (trackpoints.size() == 0) 
+    auto trackpoint = std::ranges::find_if(devices, DeviceDiscovery::isTrackpoint);
+    if (trackpoint == devices.end())
     {
         throw TrackpointNotFoundException("no device name satisfy regex `TPPS/2.*TrackPoint`");
     }
-    if (trackpoints.size() > 1) 
-    {
-        std::cerr << "Found " << trackpoints.size() << " trackpoint devices - " << trackpoints[0].eventPath << " (" << trackpoints[0].name << ") will be used";
-    }
-    this->trackpointEventPathCache = trackpoints[0].eventPath;
-    return trackpoints[0].eventPath;
+    this->trackpointEventPathCache = trackpoint->eventPath;
+    return trackpoint->eventPath;
 }
-
 
 inline bool DeviceDiscovery::isTrackpoint(const Device& device) noexcept 
 {
