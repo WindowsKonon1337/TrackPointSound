@@ -5,7 +5,7 @@
   
   Ubuntu
   ```bash
-  sudo apt install libsfml-dev 
+  sudo apt install libsfml-dev libudev-dev 
   ```
   Arch-based
   ```bash
