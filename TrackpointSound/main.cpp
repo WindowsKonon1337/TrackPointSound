@@ -1,12 +1,14 @@
 #include "MouseDevice.hpp"
 #include "SoundPlayer.hpp"
+#include "DeviceDiscovery.hpp"
 
 using utils::MouseDevice;
 using utils::SoundPlayer;
+using utils::DeviceDiscovery;
 
 int main(const int argc, const char* argv[]) {
-    auto player = SoundPlayer("../../TrackpointSound/audio/");
-    auto device = MouseDevice("/dev/input/event6");
+    SoundPlayer player("../../TrackpointSound/audio/");
+    MouseDevice device(DeviceDiscovery().getTrackpointEventPath());
 
     while (true)
     {
