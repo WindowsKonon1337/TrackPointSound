@@ -2,13 +2,6 @@ cmake_minimum_required(VERSION 3.14)
 
 project(TrackpointSound LANGUAGES CXX)
 
-# Set C++ standard to C++20
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-# Optional: Ensure no fallback to older standards
-set(CMAKE_CXX_EXTENSIONS OFF)
-
 find_package(PkgConfig REQUIRED)
 find_package(SFML COMPONENTS audio system REQUIRED)
 pkg_check_modules(UDEV REQUIRED libudev)
