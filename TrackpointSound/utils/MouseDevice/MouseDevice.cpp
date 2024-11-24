@@ -9,7 +9,7 @@ namespace utils
 
         if (!miceDevFile.is_open())
         {
-            throw DevOpenFailException("Failed to open device");
+            throw DevOpenFailException("Failed to open " + device + " device\nMake sure to provide sufficient rights: sudo chmod a+r " + device);
         }
     }
 
