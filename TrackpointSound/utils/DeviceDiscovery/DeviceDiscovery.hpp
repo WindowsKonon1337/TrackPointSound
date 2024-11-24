@@ -19,12 +19,12 @@ struct Device {
 class DeviceDiscovery {
 public:
     std::string getTrackpointEventPath(bool useCache=true);
+
+    std::vector<Device> discoverDevices();
 private:
     std::string trackpointEventPathCache;
 
     static inline bool isTrackpoint(const Device& device) noexcept;
-
-    std::vector<Device> discoverDevices();
 
     std::optional<std::string> getDeviceEventPath(udev_device *device);
 
