@@ -1,5 +1,6 @@
 #include "SoundPlayer.hpp"
 #include "LoadSampleFromFileFailException.hpp"
+#include "EmptyAudioFolderException.hpp"
 
 
 namespace utils
@@ -12,6 +13,11 @@ namespace utils
             samples.push_back(
                 std::string(elem.path())
             );
+        }
+
+        if (!samples.size())
+        {
+            throw EmptyAudioFolderException("directory " + audioFolderPath + " does not contains any files");
         }
         
         randomGenerator = std::make_unique<std::mt19937>(std::random_device{}());

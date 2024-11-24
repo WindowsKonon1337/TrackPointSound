@@ -14,6 +14,7 @@ include_directories(
     Exceptions/LoadSampleFromFileFailException
     Exceptions/TrackpointNotFoundException
     Exceptions/UdevContextFailException
+    Exceptions/EmptyAudioFolderException
 )
 
 add_executable(
