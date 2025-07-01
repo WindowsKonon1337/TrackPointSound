@@ -3,20 +3,20 @@
 ## Description
 This project is a more serious implementation of a comic program for playing sound when touching a trackpoint
 ## dependencies
-* sfml
+* sfml == 2.6.2-1 (or less than 3.0) CHECK THE SFML VERSION
   
   Ubuntu
   ```bash
   sudo apt install libsfml-dev libudev-dev 
   ```
+CHECK THE SFML VERSION
   
   Arch-based
-  ```bash
-  sudo pacman -S sfml
-  ```
+  
+  *   Will be installed with the aur package
 
 ## Installation
-* Arch(btw)-based
+* Arch(btw)-based 
   ```bash
   yay -S trackpointsound
   ```
