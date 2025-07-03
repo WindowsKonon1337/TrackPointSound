@@ -1,4 +1,5 @@
-# TrackPoint Sound
+# TrackPoint Sound WIP
+## migrating to sfmlv3
 
 ## Description
 This project is a more serious implementation of a comic program for playing sound when touching a trackpoint
