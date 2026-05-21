@@ -56,6 +56,10 @@ sudo pacman -S systemd-libs alsa-lib rust cargo pkgconf libudev
 
    or add your user to the `input` group (re-login required).
 
+   ```bash
+   sudo usermod -aG input $USER
+   ```
+
 2. **Empty audio folder** — the program exits if `~/.trackpointsound/audio/` has no supported audio files.
 
 3. **Trackpoint not found** — the device name must match `TPPS/2.*TrackPoint` (common on ThinkPads).
@@ -65,11 +69,3 @@ sudo pacman -S systemd-libs alsa-lib rust cargo pkgconf libudev
 configuration folder is located at `~/.trackpointsound`
 
 Put custom samples in `~/.trackpointsound/audio/` to override the package defaults from `/usr/share/trackpointsound/audio/`.
-
-## AUR packaging
-
-Draft [`aur/PKGBUILD`](aur/PKGBUILD) is included. Before publishing:
-
-1. Create a git tag `v0.2.0` (version in `Cargo.toml`).
-2. Update `sha256sums` in the PKGBUILD (`makepkg -g`).
-3. Generate `.SRCINFO` (`makepkg --printsrcinfo > .SRCINFO`).
