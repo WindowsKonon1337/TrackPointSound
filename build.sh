@@ -5,6 +5,8 @@ PREFIX="${PREFIX:-/usr/local}"
 DESTDIR="${DESTDIR:-}"
 
 cargo build --release
+install -Dm755 target/release/trackpointsound ./trackpointsound
+echo "built: $(pwd)/trackpointsound"
 
 install_files() {
     install -Dm755 target/release/trackpointsound "$DESTDIR$PREFIX/bin/trackpointsound"
