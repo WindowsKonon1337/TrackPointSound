@@ -22,7 +22,7 @@ pub enum AppError {
     LoadSample {
         path: String,
         #[source]
-        source: rodio::source::SourceError,
+        source: rodio::decoder::DecoderError,
     },
 
     #[error("failed to open default audio output: {0}")]

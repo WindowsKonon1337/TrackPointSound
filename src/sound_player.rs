@@ -1,5 +1,5 @@
 use crate::error::{AppError, Result};
-use rand::seq::SliceRandom;
+use rand::prelude::IndexedRandom;
 use rodio::{Decoder, OutputStream, OutputStreamHandle, Sink};
 use std::fs::{self, File};
 use std::io::BufReader;
@@ -69,7 +69,7 @@ impl SoundPlayer {
     pub fn play_random(&mut self) -> Result<()> {
         let path = self
             .samples
-            .choose(&mut rand::thread_rng())
+            .choose(&mut rand::rng())
             .expect("samples checked non-empty in constructor")
             .clone();
 
@@ -93,7 +93,7 @@ fn collect_samples(dir: &Path) -> Result<Vec<PathBuf>> {
     let mut samples = Vec::new();
 
     for entry in fs::read_dir(dir).map_err(|e| AppError::Other(e.into()))? {
-        let entry = entry?;
+        let entry = entry.map_err(|e| AppError::Other(e.into()))?;
         let path = entry.path();
         if !path.is_file() {
             continue;
