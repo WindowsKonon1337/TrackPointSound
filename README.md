@@ -1,44 +1,75 @@
 # TrackPoint Sound
 
 ## Description
-This project is a more serious implementation of a comic program for playing sound when touching a trackpoint
+This project is a more serious implementation of a comic program for playing sound when touching a trackpoint.
+
+Rust rewrite: device discovery via **libudev**, input events via **evdev**, playback via **rodio** (mp3, wav, ogg, flac, and more).
+
 ## dependencies
-* sfml == 2.6.2-1 (or less than 3.0) CHECK THE SFML VERSION
-  
-  Ubuntu
-  ```bash
-  sudo apt install libsfml-dev libudev-dev 
-  ```
-CHECK THE SFML VERSION
-  
-  Arch-based
-  
-  *   Will be installed with the aur package
+
+Arch-based (x86_64)
+
+* `systemd-libs` (libudev) — trackpoint discovery
+* `alsa-lib` — audio output (rodio/cpal)
+* build: `rust`, `cargo`, `pkgconf`, `libudev`
+
+```bash
+sudo pacman -S systemd-libs alsa-lib rust cargo pkgconf libudev
+```
+
+* Will be installed with the AUR package
 
 ## Installation
-* Arch(btw)-based 
+
+* Arch(btw)-based
+
   ```bash
   yay -S trackpointsound
   ```
-* Ubuntu-based (manual installing)
-```
-git clone https://github.com/WindowsKonon1337/TrackPointSound.git
-cd TrackPointSound
-cmake -B ./build -S .
-cd build/TrackpointSound && make
-sudo cp TrackpointSound /usr/bin/trackpointsound
-sudo chmod +x /usr/bin/trackpointsound
-mkdir -p ~/.trackpointsound
-cp -r ./audio ~/.trackpointsound
-```
+
+* manual (from source)
+
+  ```bash
+  git clone https://github.com/WindowsKonon1337/TrackPointSound.git
+  cd TrackPointSound
+  ./build.sh install          # PREFIX=/usr/local, copies audio to ~/.trackpointsound/
+  # or system-wide:
+  sudo ./build.sh install PREFIX=/usr
+  ```
+
+  Audio lookup order: `~/.trackpointsound/audio/` (if not empty), then `/usr/share/trackpointsound/audio/`.
+
+  or:
+
+  ```bash
+  cargo install --path .
+  mkdir -p ~/.trackpointsound && cp -r audio ~/.trackpointsound/
+  ```
 
 ## possible problems
-1. For Ubuntu 22.04 and below, the apt repository contains a version of sfml that does not support mp3 playback. It is recommended that when adding your audio, use a supported format, or manually compile a more recent version of the library
 
+1. **No access to the trackpoint device** — you need read access to `/dev/input/event*`:
 
+   ```bash
+   sudo chmod a+r /dev/input/eventN   # N = your trackpoint event number
+   ```
+
+   or add your user to the `input` group (re-login required).
+
+2. **Empty audio folder** — the program exits if `~/.trackpointsound/audio/` has no supported audio files.
+
+3. **Trackpoint not found** — the device name must match `TPPS/2.*TrackPoint` (common on ThinkPads).
 
 ## Configuration
 
-configuration folder is locates at ~/.trackpointsound
+configuration folder is located at `~/.trackpointsound`
 
-At the moment it only contains the audio folder, from which samples are taken for playback
+Put custom samples in `~/.trackpointsound/audio/` to override the package defaults from `/usr/share/trackpointsound/audio/`.
+
+## AUR packaging
+
+Draft [`aur/PKGBUILD`](aur/PKGBUILD) is included. Before publishing:
+
+1. Create a git tag `v0.2.0` (version in `Cargo.toml`).
+2. Update `sha256sums` in the PKGBUILD (`makepkg -g`).
+3. Generate `.SRCINFO` (`makepkg --printsrcinfo > .SRCINFO`).
