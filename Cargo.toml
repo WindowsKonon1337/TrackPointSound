@@ -1,0 +1,24 @@
+[package]
+name = "trackpointsound"
+version = "0.2.0"
+edition = "2021"
+description = "Play a random sound when the trackpoint moves"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/WindowsKonon1337/TrackPointSound"
+
+[[bin]]
+name = "trackpointsound"
+path = "src/main.rs"
+
+[dependencies]
+evdev = "0.12"
+rand = "0.9"
+rodio = { version = "0.20", default-features = false, features = ["symphonia-all"] }
+thiserror = "2"
+udev = "0.9"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
